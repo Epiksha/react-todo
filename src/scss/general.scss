@@ -5,10 +5,11 @@
 @import 'variables';
 @import 'mixins';
 @import 'defaults';
-@import 'layout';
 @import 'typography';
 @import 'utilities';
 
 // Component Imports
-@import './components/home';
-@import './components/example';
+@import 'components/button';
+@import 'components/holder';
+@import 'components/create';
+@import 'components/task';

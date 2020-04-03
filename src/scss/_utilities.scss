@@ -1,0 +1,78 @@
+.ut-relative {
+    position: relative;
+}
+
+.ut-borderBox {
+    box-sizing: border-box;
+}
+
+$directions: 'Top', 'Right', 'Bottom', 'Left';
+
+// Spacing
+@for $i from 0 through 5 {
+    @for $j from 1 through length($directions) {
+        @if $i == 1 {
+            .ut-margin {
+                margin: #{$i * 1rem} !important;
+            }
+
+            .ut-margin#{nth($directions, $j)} {
+                margin-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+            }
+
+            .ut-marginVert {
+                margin-top: #{$i * 1rem};
+                margin-bottom: #{$i * 1rem};
+            }
+            
+            .ut-marginHorz {
+                margin-left: #{$i * 1rem};
+                margin-right: #{$i * 1rem};
+            }
+
+            .ut-padding {
+                padding: #{$i * 1rem} !important;
+            }
+
+            .ut-padding#{nth($directions, $j)} {
+                padding-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+            }
+
+            .ut-paddingVert {
+                padding-top: #{$i * 1rem};
+                padding-bottom: #{$i * 1rem};
+            }
+            
+            .ut-paddingHorz {
+                padding-left: #{$i * 1rem};
+                padding-right: #{$i * 1rem};
+            }
+        } @else {
+            .ut-margin-#{$i} {
+                margin: #{$i * 1rem};
+            }
+
+            .ut-margin#{nth($directions, $j)}-#{$i} {
+                margin-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+            }
+
+            .ut-padding-#{$i} {
+                padding: #{$i * 1rem} !important;
+            }
+
+            .ut-padding#{nth($directions, $j)}-#{$i} {
+                padding-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+            }
+            
+            .ut-paddingVert-#{$i} {
+                padding-top: #{$i * 1rem};
+                padding-bottom: #{$i * 1rem};
+            }
+            
+            .ut-paddingHorz-#{$i} {
+                padding-left: #{$i * 1rem};
+                padding-right: #{$i * 1rem};
+            }
+        }
+    }
+}
