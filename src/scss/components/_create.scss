@@ -1,5 +1,5 @@
 .create {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
 
@@ -21,7 +21,7 @@
         transform: translateY(100%);
 
         &.active {
-            transform: translate(-50%, 0);
+            transform: translateY(0%);
         }
     }
 

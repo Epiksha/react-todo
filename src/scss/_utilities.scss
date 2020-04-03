@@ -13,11 +13,11 @@ $directions: 'Top', 'Right', 'Bottom', 'Left';
     @for $j from 1 through length($directions) {
         @if $i == 1 {
             .ut-margin {
-                margin: #{$i * 1rem} !important;
+                margin: #{$i * 1rem};
             }
 
             .ut-margin#{nth($directions, $j)} {
-                margin-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+                margin-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem};
             }
 
             .ut-marginVert {
@@ -31,11 +31,11 @@ $directions: 'Top', 'Right', 'Bottom', 'Left';
             }
 
             .ut-padding {
-                padding: #{$i * 1rem} !important;
+                padding: #{$i * 1rem};
             }
 
             .ut-padding#{nth($directions, $j)} {
-                padding-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+                padding-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem};
             }
 
             .ut-paddingVert {
@@ -53,15 +53,25 @@ $directions: 'Top', 'Right', 'Bottom', 'Left';
             }
 
             .ut-margin#{nth($directions, $j)}-#{$i} {
-                margin-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+                margin-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem};
+            }
+
+            .ut-marginVert-#{$i} {
+                margin-top: #{$i * 1rem};
+                margin-bottom: #{$i * 1rem};
+            }
+            
+            .ut-marginHorz-#{$i} {
+                margin-left: #{$i * 1rem};
+                margin-right: #{$i * 1rem};
             }
 
             .ut-padding-#{$i} {
-                padding: #{$i * 1rem} !important;
+                padding: #{$i * 1rem};
             }
 
             .ut-padding#{nth($directions, $j)}-#{$i} {
-                padding-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem} !important;
+                padding-#{unquote(to-lower-case((nth($directions, $j))))}: #{$i * 1rem};
             }
             
             .ut-paddingVert-#{$i} {
