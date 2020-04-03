@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Example from '../components/Example/Example';
+import TaskHolder from '../components/TaskHolder/TaskHolder';
 
 const Home = () => (
-    <main className="home">
-        <div className="home__hero" />
-        <Example />
-    </main>
+    <div className="wrapper">
+        <TaskHolder />
+    </div>
 );
 
 export default Home;

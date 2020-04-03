@@ -1,0 +1,27 @@
+.button {
+    display: block;
+
+    box-sizing: border-box;
+    border: none;
+    padding: 0;
+
+    background-color: transparent;
+
+    &--create {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+        z-index: 1;
+
+        height: 6.4rem;
+        width: 6.4rem;
+        border-radius: 50%;
+
+        background-color: $color4;
+        color: $color0;
+
+        font-size: 3.8em;
+        line-height: 100%;
+    }
+}
