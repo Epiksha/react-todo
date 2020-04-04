@@ -43,7 +43,7 @@ const createTask = ({ tasks, isActive, toggleActive }) => (
                     placeholder="What do you need to do?"
                 />
 
-                <PriorityHolder />
+                <PriorityHolder tasks={tasks} />
                 <ParentHolder tasks={tasks} />
             </div>
         </div>

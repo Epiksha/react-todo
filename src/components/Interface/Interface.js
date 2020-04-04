@@ -56,11 +56,15 @@ class Interface extends Component {
                     className="ut-padding-2"
                 >
                     {tasks.map((task) => (
-                        <Task info={task} key={task.key} />
+                        <Task taskData={task} key={task.key} />
                     ))}
                 </div>
 
-                <CreateTask tasks={tasks} isActive={isCreateActive} toggleActive={this.toggleCreate} />
+                <CreateTask
+                    tasks={tasks}
+                    isActive={isCreateActive}
+                    toggleActive={this.toggleCreate}
+                />
             </main>
         );
     }

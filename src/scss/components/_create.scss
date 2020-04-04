@@ -9,10 +9,14 @@
 
     background: transparent;
 
+    pointer-events: none;
+
     transition: background 1s;
 
     &.active {
         background: transparentize($color10, 0.1);
+
+        pointer-events: all;
 
         transition: background 1s;
     }
