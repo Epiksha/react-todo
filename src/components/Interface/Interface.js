@@ -10,15 +10,15 @@ class Interface extends Component {
         this.state = {
             tasks: [],
     
-            isCreateActive: false,
+            isCreateActive: true,
         };
     }
 
     componentDidMount() {
-        const storedTasks = localStorage.getItem('tasks');
+        const tasks = JSON.parse(localStorage.getItem('tasks'));
         
-        if (storedTasks) {
-            this.setState({ tasks: storedTasks });
+        if (tasks) {
+            this.setState(tasks);
         }
     }
 
@@ -26,6 +26,10 @@ class Interface extends Component {
         const { isCreateActive } = this.state;
 
         this.setState({ isCreateActive: !isCreateActive });
+    }
+
+    refreshTasks = () => {
+        this.setState({ tasks: JSON.parse(localStorage.getItem('tasks')) });
     }
 
     render() {
@@ -37,7 +41,7 @@ class Interface extends Component {
 
                 <div className="tasksContainer ut-padding-2">
                     {tasks.map((task) => (
-                        <Task taskData={task} key={task.key} />
+                        <Task taskData={task} key={Math.floor(Math.random() * 100000)} />
                     ))}
                 </div>
 
@@ -45,6 +49,7 @@ class Interface extends Component {
                     tasks={tasks}
                     isActive={isCreateActive}
                     toggleActive={this.toggleCreateModal}
+                    refreshTasks={this.refreshTasks}
                 />
             </main>
         );

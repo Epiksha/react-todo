@@ -1,28 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Priority from '../Priority/Priority';
 
-const PriorityHolder = () => {
-    const priorityTypes = [
-        {
-            title: 'Low',
-            theme: 'low',
-            isActive: false,
-        },
-        {
-            title: 'Medium',
-            theme: 'med',
-            isActive: false,
-        },
-        {
-            title: 'High',
-            theme: 'high',
-            isActive: false,
-        },
-    ];
+const PriorityHolder = ({ currentPriority, handlePriorityChange }) => {
+    const priorityTypes = ['Low', 'Medium', 'High'];
 
-    const changePriority = () => {
-        
+    const changePriority = (type) => {
+        handlePriorityChange(type);
     };
 
     return (
@@ -34,19 +19,22 @@ const PriorityHolder = () => {
             </div>
     
             <div className="ut-inlineBlock ut-width-70">
-                {priorityTypes.map(({ title, theme, isActive }, i) => (
+                {priorityTypes.map((type) => (
                     <Priority
-                        title={title}
-                        theme={theme}
-                        isActive={isActive}
-                        index={i}
-                        toggleActive={changePriority}
-                        key={theme}
+                        type={type}
+                        changePriority={changePriority}
+                        currentPriority={currentPriority}
+                        key={Math.floor(Math.random() * 100000)}
                     />
                 ))}
             </div>
         </section>
     );
+};
+
+PriorityHolder.propTypes = {
+    currentPriority: PropTypes.string.isRequired,
+    handlePriorityChange: PropTypes.func.isRequired,
 };
 
 export default PriorityHolder;

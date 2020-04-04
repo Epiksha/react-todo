@@ -1,31 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Priority = ({
-    title,
-    theme,
-    isActive,
-    toggleActive,
-}) => (
+const Priority = ({ type, currentPriority, changePriority }) => (
     <button
         type="button"
         className={`
             button
             button--priority
-            button--priority--${theme}
-            ${isActive ? 'active' : ''}
+            button--priority--${type.toLowerCase()}
+            ${currentPriority === type ? 'active' : ''}
         `}
-        onClick={toggleActive}
+        onClick={() => changePriority(type)}
     >
-        {title}
+        {type}
     </button>
 );
 
 Priority.propTypes = {
-    title: PropTypes.string.isRequired,
-    theme: PropTypes.string.isRequired,
-    isActive: PropTypes.bool.isRequired,
-    toggleActive: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
+    currentPriority: PropTypes.string.isRequired,
+    changePriority: PropTypes.func.isRequired,
 };
 
 export default Priority;

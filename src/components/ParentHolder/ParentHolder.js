@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ParentDropdown from '../ParentDropdown/ParentDropdown';
 
-const ParentHolder = ({ tasks }) => (
+const ParentHolder = ({ parents, currentParent, handleParentChange }) => (
     <section className="ut-paddingVert">
         <div className="label">
             <h4 className="label__text">
@@ -12,16 +12,15 @@ const ParentHolder = ({ tasks }) => (
         </div>
 
         <div className="ut-inlineBlock ut-width-70 ">
-            <ParentDropdown tasks={tasks} />
+            <ParentDropdown parents={parents} handleParentChange={handleParentChange} currentParent={currentParent} />
         </div>
     </section>
 );
 
 ParentHolder.propTypes = {
-    tasks: PropTypes.arrayOf(PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        key: PropTypes.string.isRequired,
-    })).isRequired,
+    parents: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    currentParent: PropTypes.string.isRequired,
+    handleParentChange: PropTypes.func.isRequired,
 };
 
 export default ParentHolder;

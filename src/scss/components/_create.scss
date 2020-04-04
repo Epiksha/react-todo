@@ -40,12 +40,19 @@
     }
 
     &__text {
+        box-sizing: border-box;
         min-height: 100px;
         width: 100%;
         border-radius: 0.5em;
         border: none;
         resize: none;
+        border: solid 1px transparent;
 
+        transition: border 1s;
+
+        &--warning {
+            border: solid 1px $color3;
+        }
 
         &::placeholder {
             color: transparentize($color2, 0.66);

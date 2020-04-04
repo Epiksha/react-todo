@@ -42,7 +42,7 @@ class Task extends Component {
                         ut-inlineBlock
                     "
                 >
-                    {taskData.title}
+                    {taskData.text}
                 </h2>
 
                 <div
@@ -74,8 +74,8 @@ class Task extends Component {
 
 Task.propTypes = {
     taskData: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        key: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        key: PropTypes.number.isRequired,
         priority: PropTypes.string.isRequired,
         parent: PropTypes.string.isRequired,
         isComplete: PropTypes.bool.isRequired,
