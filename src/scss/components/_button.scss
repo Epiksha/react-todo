@@ -24,4 +24,33 @@
         font-size: 3.8em;
         line-height: 100%;
     }
+
+    &--priority {
+        display: inline-block;
+
+        border-radius: 1rem;
+        width: 30%;
+        margin: 0 1.5%;
+        padding: 0.25em;
+
+        font-size: 0.8em;
+
+        &--low {
+            border: solid 1px $color10;
+            
+            color: $color10;
+        }
+
+        &--med {
+            border: solid 1px $color5;
+
+            color: $color5;
+        }
+
+        &--high {
+            border: solid 1px $color3;
+
+            color: $color3;
+        }
+    }
 }

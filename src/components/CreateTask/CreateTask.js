@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const createTask = ({ active, toggleActive }) => (
+import PriorityHolder from '../PriorityHolder/PriorityHolder';
+
+const createTask = ({ isActive, toggleActive }) => (
     <>
         <button
             type="button"
-            className="button button--create"
+            className="
+                button
+                button--create
+            "
             onClick={toggleActive}
         >
             +
@@ -13,7 +18,13 @@ const createTask = ({ active, toggleActive }) => (
 
         <div className="create">
             <div
-                className={`create__inner ut-borderBox ut-padding-4 ${active ? 'active' : ''}`}
+                className={`
+                    create__inner
+                    ut-borderBox
+                    ut-paddingVert-4
+                    ut-paddingHorz-2
+                    ${isActive ? 'active' : ''}
+                `}
             >
                 <textarea
                     name="create"
@@ -21,16 +32,19 @@ const createTask = ({ active, toggleActive }) => (
                     className="
                         create__text
                         ut-borderBox
+                        ut-padding
                     "
                     placeholder="What do you need to do?"
                 />
+
+                <PriorityHolder />
             </div>
         </div>
     </>
 );
 
 createTask.propTypes = {
-    active: PropTypes.bool.isRequired,
+    isActive: PropTypes.bool.isRequired,
     toggleActive: PropTypes.func.isRequired,
 };
 

@@ -1,16 +1,17 @@
 .create {
-    position: relative;
+    position: absolute;
     bottom: 0;
     left: 0;
 
     overflow: hidden;
-    height: 200px;
+    height: 400px;
     width: 100%;
 
     &__inner {
         position: absolute;
         bottom: 0;
         left: 0;
+        transform: translateY(100%);
 
         width: 100%;
 
@@ -18,22 +19,23 @@
 
         transition: transform 1s;
 
-        transform: translateY(100%);
-
         &.active {
             transform: translateY(0%);
         }
     }
 
     &__text {
+        min-height: 100px;
         width: 100%;
-        padding: $spacing * 0.5 $spacing;
-        border-radius: 0.25em;
+        border-radius: 0.5em;
         border: none;
         resize: none;
 
+
         &::placeholder {
             color: transparentize($color2, 0.66);
+            
+            font-weight: bold;
         }
     }
 }

@@ -1,0 +1,19 @@
+.priorityHolder {
+    &__label, &__buttons {
+        display: inline-block;
+    }
+
+    &__label {
+        text-align: left;
+
+        width: 30%;
+
+        color: transparentize($color2, 0.51);
+        
+        font-size: 1.25em;
+    }
+
+    &__buttons {
+        width: 70%;
+    }
+}

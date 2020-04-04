@@ -27,12 +27,12 @@ class TaskHolder extends Component {
                 },
             ],
     
-            isCreateActive: false,
+            isCreateActive: true,
         };
     }
 
-    toggleCreate = (state) => {
-        const { isCreateActive } = state;
+    toggleCreate = () => {
+        const { isCreateActive } = this.state;
 
         this.setState({ isCreateActive: !isCreateActive });
     }
@@ -52,7 +52,7 @@ class TaskHolder extends Component {
                     ))}
                 </div>
 
-                <CreateTask active={isCreateActive} toggleActive={this.toggleCreate} />
+                <CreateTask isActive={isCreateActive} toggleActive={this.toggleCreate} />
             </main>
         );
     }
