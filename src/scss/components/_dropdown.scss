@@ -1,0 +1,13 @@
+.dropdown {
+    width: 100%;
+    padding: $spacing * 0.25 0;
+    border: none;
+    border-bottom: solid 1px transparentize($color2, 0.76);
+
+    background: transparent;
+    color: transparentize($color2, 0.7);
+
+    font-size: 0.8em;
+    font-weight: bold;
+    font-family: 'Proxima Nova';
+}

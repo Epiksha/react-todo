@@ -1,0 +1,10 @@
+.label {
+    display: inline-block;
+    text-align: left;
+
+    width: 30%;
+
+    color: transparentize($color2, 0.51);
+    
+    font-size: 1.25em;
+}

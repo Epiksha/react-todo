@@ -4,8 +4,18 @@
     left: 0;
 
     overflow: hidden;
-    height: 400px;
+    height: 100%;
     width: 100%;
+
+    background: transparent;
+
+    transition: background 1s;
+
+    &.active {
+        background: transparentize($color10, 0.1);
+
+        transition: background 1s;
+    }
 
     &__inner {
         position: absolute;
@@ -16,10 +26,11 @@
         width: 100%;
 
         background-color: $color9;
+        filter: blur(0);
 
         transition: transform 1s;
 
-        &.active {
+        .create.active & {
             transform: translateY(0%);
         }
     }

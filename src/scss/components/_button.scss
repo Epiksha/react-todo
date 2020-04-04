@@ -14,15 +14,22 @@
         transform: translate(-50%, 50%);
         z-index: 1;
 
-        height: 6.4rem;
-        width: 6.4rem;
+        height: 5.5rem;
+        width: 5.5rem;
+        border: solid 4px $color4;
         border-radius: 50%;
 
-        background-color: $color4;
+        background-color: $color2;
         color: $color0;
 
         font-size: 3.8em;
         line-height: 100%;
+
+        transition: background-color 0.5s;
+
+        &.active {
+            background-color: $color4;
+        }
     }
 
     &--priority {
@@ -35,22 +42,38 @@
 
         font-size: 0.8em;
 
+        &.active {
+            color: $color0;
+        }
+
         &--low {
             border: solid 1px $color10;
             
             color: $color10;
+
+            &.active {
+                background: $color10;
+            }
         }
 
         &--med {
             border: solid 1px $color5;
 
             color: $color5;
+
+            &.active {
+                background: $color5;
+            }
         }
 
         &--high {
             border: solid 1px $color3;
 
             color: $color3;
+
+            &.active {
+                background: $color3;
+            }
         }
     }
 }

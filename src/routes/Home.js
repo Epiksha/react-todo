@@ -1,10 +1,10 @@
 import React from 'react';
 
-import TaskHolder from '../components/TaskHolder/TaskHolder';
+import Interface from '../components/Interface/Interface';
 
 const Home = () => (
     <div className="wrapper">
-        <TaskHolder />
+        <Interface />
     </div>
 );
 
