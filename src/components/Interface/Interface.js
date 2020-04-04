@@ -8,38 +8,21 @@ class Interface extends Component {
         super();
 
         this.state = {
-            tasks: [
-                {
-                    title: 'Set up Git repo for new project',
-                    key: 'unique-1',
-                    priority: 'low',
-                    parent: 'None',
-                },
-                {
-                    title: 'Send project to QA',
-                    key: 'unique-2',
-                    priority: 'medium',
-                    parent: 'None',
-                },
-                {
-                    title: 'Hotfix #38 for project',
-                    key: 'unique-3',
-                    priority: 'high',
-                    parent: 'None',
-                },
-                {
-                    title: 'Prepare for meeting',
-                    key: 'unique-4',
-                    priority: 'high',
-                    parent: 'None',
-                },
-            ],
+            tasks: [],
     
             isCreateActive: false,
         };
     }
 
-    toggleCreate = () => {
+    componentDidMount() {
+        const storedTasks = localStorage.getItem('tasks');
+        
+        if (storedTasks) {
+            this.setState({ tasks: storedTasks });
+        }
+    }
+
+    toggleCreateModal = () => {
         const { isCreateActive } = this.state;
 
         this.setState({ isCreateActive: !isCreateActive });
@@ -52,9 +35,7 @@ class Interface extends Component {
             <main className="holder">
                 <h1 className="ut-relative ut-marginTop-3 ut-z-1">Things To Do List</h1>
 
-                <div
-                    className="ut-padding-2"
-                >
+                <div className="tasksContainer ut-padding-2">
                     {tasks.map((task) => (
                         <Task taskData={task} key={task.key} />
                     ))}
@@ -63,7 +44,7 @@ class Interface extends Component {
                 <CreateTask
                     tasks={tasks}
                     isActive={isCreateActive}
-                    toggleActive={this.toggleCreate}
+                    toggleActive={this.toggleCreateModal}
                 />
             </main>
         );
