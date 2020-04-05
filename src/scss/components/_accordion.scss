@@ -5,11 +5,14 @@
 
     list-style: none;
 
-    transition: max-height 0.5s;
+    opacity: 0;
+
+    transition: max-height 0.5s, opacity 0.5s;
 
     &.expanded {
         max-height: 100rem;
-        transition: max-height 1s;
+        opacity: 1;
+        transition: max-height 1s, opacity 0.5s;
     }
 
     .task {
@@ -23,11 +26,11 @@
 
         transition: color 0.5s;
 
-        &__radio label:before {
+        .button--radio label:before {
             background-color: $color8;
         }
         
-        &.active .task__radio label:before {
+        &.active .button--radio label:before {
             @debug &;
             background-color: $color4;
         }

@@ -80,18 +80,21 @@ class createTask extends Component {
 
         localStorage.setItem('tasks', JSON.stringify(tasks));
 
+        const emptyCurrent = {
+            text: '',
+            priority: 'Low',
+            parent: 'None',
+            isComplete: false,
+            key: Math.floor(Math.random() * 100000),
+        };
+
         this.setState({
-            currentTask: {
-                text: '',
-                priority: 'Low',
-                parent: 'None',
-                isComplete: false,
-                key: Math.floor(Math.random() * 100000),
-            },
+            currentTask: emptyCurrent,
         });
 
         refreshTasks();
         toggleActive();
+        this.forceUpdate();
     }
 
     render() {

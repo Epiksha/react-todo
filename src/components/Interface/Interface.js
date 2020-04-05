@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import Task from '../Task/Task';
 import CreateTask from '../CreateTask/CreateTask';
 
+import { ReactComponent as Fingerprint } from '../../assets/images/fingerprint.svg';
+import { ReactComponent as Logo } from '../../assets/images/logo.svg';
+
 class Interface extends Component {
     constructor() {
         super();
@@ -36,22 +39,38 @@ class Interface extends Component {
         const { tasks, isCreateActive } = this.state;
 
         return (
-            <main className="holder">
-                <h1 className="ut-relative ut-marginTop-3 ut-z-1">Things To Do List</h1>
+            <>
+                <button
+                    type="button"
+                    className="button button--fingerprint"
+                >
+                    <Fingerprint />
+                </button>
 
-                <div className="tasksContainer ut-padding-2">
-                    {tasks.map((task) => (
-                        <Task taskData={task} key={Math.floor(Math.random() * 100000)} />
-                    ))}
-                </div>
+                <main className="holder">
+                    <h1 className="ut-relative ut-marginVert-3 ut-z-1">Things To Do List</h1>
 
-                <CreateTask
-                    tasks={tasks}
-                    isActive={isCreateActive}
-                    toggleActive={this.toggleCreateModal}
-                    refreshTasks={this.refreshTasks}
-                />
-            </main>
+                    <div className="tasksContainer ut-paddingHorz-2 ut-paddingBottom-3 ut-borderBox">
+                        {tasks.map((task) => (
+                            <Task
+                                taskData={task}
+                                tasks={tasks}
+                                refreshTasks={this.refreshTasks}
+                                key={Math.floor(Math.random() * 100000)}
+                            />
+                        ))}
+                    </div>
+
+                    <CreateTask
+                        tasks={tasks}
+                        isActive={isCreateActive}
+                        toggleActive={this.toggleCreateModal}
+                        refreshTasks={this.refreshTasks}
+                    />
+                </main>
+
+                <Logo className="logo" />
+            </>
         );
     }
 }

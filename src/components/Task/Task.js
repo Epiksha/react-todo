@@ -8,22 +8,23 @@ class Task extends Component {
     constructor(props) {
         super(props);
 
-        const { taskData } = props;
-        
         this.state = {
-            taskData,
             isExpanded: false,
         };
     }
 
     toggleComplete = (event) => {
+        const { taskData, tasks } = this.props;
+        const tempTask = taskData;
+
         if (event.key && event.key !== 'Enter') {
             return;
         }
 
-        const { taskData } = this.state;
-        taskData.isComplete = !taskData.isComplete;
-        this.setState(taskData);
+        taskData.isComplete = !(taskData.isComplete);
+        tasks[tasks.indexOf(tempTask)] = taskData;
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        this.forceUpdate();
     }
 
     toggleExpanded = () => {
@@ -33,21 +34,8 @@ class Task extends Component {
     }
 
     render() {
-        const { taskData, isExpanded } = this.state;
-
-        const ExpandButton = (
-            <button
-                type="button"
-                className={`
-                    button
-                    button--expand
-                    ${isExpanded ? 'expanded' : ''}
-                `}
-                onClick={this.toggleExpanded}
-            >
-                <ExpandIcon />
-            </button>
-        );
+        const { isExpanded } = this.state;
+        const { taskData, tasks, refreshTasks } = this.props;
 
         return (
             <>
@@ -55,28 +43,40 @@ class Task extends Component {
                     className={`
                         task
                         ut-relative
-                        ut-marginVert
+                        ut-borderBox
                         ${taskData.isComplete ? 'active' : ''}
                     `}
                 >
                     <h2 
-                        className="
+                        className={`
                             task__title
+                            task__title--${taskData.priority.toLowerCase()}
                             ut-inlineBlock
-                        "
+                        `}
                     >
                         {taskData.text}
                     </h2>
 
                     {/* Add Expand button */}
-                    {taskData && taskData.children ? ExpandButton : ''}
+                    {taskData && taskData.children ? (
+                        <button
+                            type="button"
+                            className={`
+                                button
+                                button--expand
+                                ${isExpanded ? 'expanded' : ''}
+                            `}
+                            onClick={this.toggleExpanded}
+                        >
+                            <ExpandIcon />
+                        </button>
+                    ) : ''}
 
-                    <div
-                        className="task__radio"
-                        role="button"
+                    <button
+                        type="button"
+                        className="button button--radio"
                         onClick={(e) => this.toggleComplete(e)}
                         onKeyPress={(e) => this.toggleComplete(e)}
-                        tabIndex={0}
                     >
                         <label
                             htmlFor="new"
@@ -92,10 +92,17 @@ class Task extends Component {
                             aria-labelledby={`${taskData.key}-radio}`}
                             className="ut-margin-0"
                         />
-                    </div>
+                    </button>
                 </article>
 
-                {taskData && taskData.children ? <Accordion taskData={taskData.children} isExpanded={isExpanded} /> : ''}
+                {taskData && taskData.children ? (
+                    <Accordion
+                        taskData={taskData.children}
+                        tasks={tasks}
+                        refreshTasks={refreshTasks}
+                        isExpanded={isExpanded}
+                    />
+                ) : ''}
             </>
         );
     }
@@ -108,7 +115,22 @@ Task.propTypes = {
         priority: PropTypes.string.isRequired,
         parent: PropTypes.string.isRequired,
         isComplete: PropTypes.bool.isRequired,
+        children: PropTypes.arrayOf(PropTypes.shape({
+            text: PropTypes.string.isRequired,
+            key: PropTypes.number.isRequired,
+            priority: PropTypes.string.isRequired,
+            parent: PropTypes.string.isRequired,
+            isComplete: PropTypes.bool.isRequired,
+        })),
     }).isRequired,
+    tasks: PropTypes.arrayOf(PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        key: PropTypes.number.isRequired,
+        priority: PropTypes.string.isRequired,
+        parent: PropTypes.string.isRequired,
+        isComplete: PropTypes.bool.isRequired,
+    }).isRequired).isRequired,
+    refreshTasks: PropTypes.func.isRequired,
 };
 
 export default Task;

@@ -37,6 +37,10 @@
         .create.active & {
             transform: translateY(0%);
         }
+
+        @media (min-width: $tablet) {
+            padding: $spacing * 4;
+        }
     }
 
     &__text {

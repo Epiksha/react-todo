@@ -1,0 +1,15 @@
+.logo {
+    position: absolute;
+    bottom: $spacing;
+    left: $spacing;
+
+    width: 10rem;
+
+    @media (min-width: $tablet) {
+        width: 12.5rem;
+    }
+    
+    @media (min-width: $desktop) {
+        width: 15rem;
+    }
+}

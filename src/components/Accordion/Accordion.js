@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 
 import Task from '../Task/Task';
 
-const Accordion = ({ taskData, isExpanded }) => (
+const Accordion = ({
+    taskData,
+    tasks,
+    refreshTasks,
+    isExpanded,
+}) => (
     <ul
         className={`
             accordion
@@ -17,6 +22,8 @@ const Accordion = ({ taskData, isExpanded }) => (
             >
                 <Task
                     taskData={task}
+                    tasks={tasks}
+                    refreshTasks={refreshTasks}
                 />
             </li>
         ))}
@@ -31,7 +38,15 @@ Accordion.propTypes = {
         parent: PropTypes.string.isRequired,
         isComplete: PropTypes.bool.isRequired,
     }).isRequired).isRequired,
+    tasks: PropTypes.arrayOf(PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        key: PropTypes.number.isRequired,
+        priority: PropTypes.string.isRequired,
+        parent: PropTypes.string.isRequired,
+        isComplete: PropTypes.bool.isRequired,
+    }).isRequired).isRequired,
     isExpanded: PropTypes.bool.isRequired,
+    refreshTasks: PropTypes.func.isRequired,
 };
 
 export default Accordion;
