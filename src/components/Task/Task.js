@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Accordion from '../Accordion/Accordion';
+import { ReactComponent as ExpandIcon } from '../../assets/icons/chevron.svg';
+
 class Task extends Component {
     constructor(props) {
         super(props);
@@ -9,6 +12,7 @@ class Task extends Component {
         
         this.state = {
             taskData,
+            isExpanded: false,
         };
     }
 
@@ -18,56 +22,81 @@ class Task extends Component {
         }
 
         const { taskData } = this.state;
-
         taskData.isComplete = !taskData.isComplete;
-
         this.setState(taskData);
     }
 
+    toggleExpanded = () => {
+        const { isExpanded } = this.state;
+
+        this.setState({ isExpanded: !isExpanded });
+    }
+
     render() {
-        const { taskData } = this.state;
+        const { taskData, isExpanded } = this.state;
+
+        const ExpandButton = (
+            <button
+                type="button"
+                className={`
+                    button
+                    button--expand
+                    ${isExpanded ? 'expanded' : ''}
+                `}
+                onClick={this.toggleExpanded}
+            >
+                <ExpandIcon />
+            </button>
+        );
 
         return (
-            <article
-                className={`
-                    task
-                    ut-relative
-                    ut-marginVert
-                    ${taskData.isComplete ? 'active' : ''}
-                `}
-            >
-                <h2 
-                    className="
-                        task__title
-                        ut-inlineBlock
-                    "
+            <>
+                <article
+                    className={`
+                        task
+                        ut-relative
+                        ut-marginVert
+                        ${taskData.isComplete ? 'active' : ''}
+                    `}
                 >
-                    {taskData.text}
-                </h2>
+                    <h2 
+                        className="
+                            task__title
+                            ut-inlineBlock
+                        "
+                    >
+                        {taskData.text}
+                    </h2>
 
-                <div
-                    className="task__radio"
-                    role="button"
-                    onClick={(e) => this.toggleComplete(e)}
-                    onKeyPress={(e) => this.toggleComplete(e)}
-                    tabIndex={0}
-                >
-                    <label
-                        htmlFor="new"
-                        id={`${taskData.key}-radio`}
-                        className=""
-                        aria-label="Mark Task Completed."
-                    />
-                    
-                    <input
-                        type="radio"
-                        id="new"
-                        name="new"
-                        aria-labelledby={`${taskData.key}-radio}`}
-                        className="ut-margin-0"
-                    />
-                </div>
-            </article>
+                    {/* Add Expand button */}
+                    {taskData && taskData.children ? ExpandButton : ''}
+
+                    <div
+                        className="task__radio"
+                        role="button"
+                        onClick={(e) => this.toggleComplete(e)}
+                        onKeyPress={(e) => this.toggleComplete(e)}
+                        tabIndex={0}
+                    >
+                        <label
+                            htmlFor="new"
+                            id={`${taskData.key}-radio`}
+                            className=""
+                            aria-label="Mark Task Completed."
+                        />
+
+                        <input
+                            type="radio"
+                            id="new"
+                            name="new"
+                            aria-labelledby={`${taskData.key}-radio}`}
+                            className="ut-margin-0"
+                        />
+                    </div>
+                </article>
+
+                {taskData && taskData.children ? <Accordion taskData={taskData.children} isExpanded={isExpanded} /> : ''}
+            </>
         );
     }
 }

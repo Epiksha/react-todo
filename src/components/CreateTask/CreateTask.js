@@ -23,7 +23,6 @@ class createTask extends Component {
         const { currentTask } = this.state;
 
         currentTask.text = newText;
-
         this.setState(currentTask);
     }
 
@@ -35,15 +34,17 @@ class createTask extends Component {
         }
 
         currentTask.priority = newPriority;
-
         this.setState(currentTask);
     }
 
     handleParentChange = (newParent) => {
         const { currentTask } = this.state;
 
-        currentTask.parent = newParent;
+        if (newParent === currentTask.parent) {
+            return;
+        }
 
+        currentTask.parent = newParent;
         this.setState(currentTask);
     }
     
@@ -51,17 +52,32 @@ class createTask extends Component {
         const { currentTask, warning } = this.state;
         const { tasks, toggleActive, refreshTasks } = this.props;
 
+        // Check that text isn't empty
         if (!currentTask.text) {
             this.setState({ warning: true });
             return;
         }
         
+        // Remove warning
         if (warning) {
             this.setState({ warning: false });
         }
 
+        // Random key
         currentTask.key = Math.floor(Math.random() * 100000);
-        tasks.push(currentTask);
+
+        if (currentTask.parent !== 'None') {
+            const parentTask = tasks.find((task) => task.text === currentTask.parent);
+
+            if (parentTask.children) {
+                parentTask.children.push(currentTask);
+            } else {
+                parentTask.children = [currentTask];
+            }
+        } else {
+            tasks.push(currentTask);
+        }
+
         localStorage.setItem('tasks', JSON.stringify(tasks));
 
         this.setState({
@@ -110,6 +126,17 @@ class createTask extends Component {
                             ut-paddingHorz-2
                         "
                     >
+                        <button
+                            type="button"
+                            className="
+                                button
+                                button--close
+                            "
+                            onClick={toggleActive}
+                        >
+                            Close
+                        </button>
+
                         <textarea
                             name="create"
                             id="js-create"

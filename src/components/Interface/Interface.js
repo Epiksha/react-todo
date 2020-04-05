@@ -10,7 +10,7 @@ class Interface extends Component {
         this.state = {
             tasks: [],
     
-            isCreateActive: true,
+            isCreateActive: false,
         };
     }
 

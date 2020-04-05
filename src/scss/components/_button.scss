@@ -79,4 +79,45 @@
             }
         }
     }
+
+    &--close {
+        position: absolute;
+        bottom: $spacing * 0.5;
+        right: $spacing * 3;
+
+        height: 1.5rem;
+        width: 1.5rem;
+
+        color: $color3;
+
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    &--expand {
+        position: absolute;
+        top: 50%;
+        right: $spacing * 4;
+        transform: translateY(-50%) rotateZ(0deg);
+
+        width: 1rem;
+        border: none;
+
+        transition: transform 0.5s;
+        animation: fadeIn 1s forwards;
+
+        &.expanded {
+            transform: translateY(-50%) rotateZ(180deg);
+        }
+
+        & > svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            fill: $color0;
+        }
+    }
 }
