@@ -4,11 +4,12 @@
     width: 100%;
 
     @media (min-width: $tablet) {
+        height: 40em;
         padding: $spacing * 2 $spacing * 5;
     }
 
     @media (min-width: $desktop) {
-        padding: $spacing * 2 $spacing * 10;
+        padding: $spacing * 2 $spacing * 7.5;
     }
 }
 

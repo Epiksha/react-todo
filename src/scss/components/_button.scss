@@ -36,6 +36,22 @@
 
         &:hover {
             transform: translate(-50%, 50%) scale(1.1);
+
+            & > span {
+                transform: translate(-50%, -50%) rotateZ(360deg);
+            }
+        }
+
+        & > span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(0);
+
+            margin: 0;
+            padding: 0;
+
+            transition: transform 1s;
         }
     }
 
@@ -53,7 +69,7 @@
 
         transition: background-color 1s;
 
-        &.active {
+        &:hover, &.active {
             color: $color0;
         }
 
@@ -62,7 +78,7 @@
             
             color: $color10;
 
-            &.active {
+            &:hover, &.active {
                 background-color: $color10;
             }
         }
@@ -72,7 +88,7 @@
 
             color: $color5;
 
-            &.active {
+            &:hover, &.active {
                 background-color: $color5;
             }
         }
@@ -82,7 +98,7 @@
 
             color: $color3;
 
-            &.active {
+            &:hover, &.active {
                 background-color: $color3;
             }
         }
@@ -90,7 +106,7 @@
 
     &--close {
         position: absolute;
-        bottom: $spacing * 0.5;
+        bottom: $spacing;
         right: $spacing * 4;
 
         height: 1.5rem;
@@ -101,6 +117,14 @@
         font-size: 1rem;
         font-weight: bold;
         text-decoration: underline;
+
+        &:hover {
+            color: lighten($color3, 10%);
+        }
+
+        @media (min-width: $tablet) {
+            right: $spacing * 9;
+        }
     }
 
     &--expand {
@@ -140,6 +164,11 @@
 
         input {
             opacity: 0;
+            cursor: pointer;
+        }
+
+        &:hover label:before {
+            background-color: lighten($color4, 20%);
         }
         
         label {
@@ -150,6 +179,7 @@
 
             height: 1.25rem;
             width: 1.25rem;
+
 
             &:before {
                 content: '';

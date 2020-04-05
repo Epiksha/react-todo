@@ -47,9 +47,24 @@ class createTask extends Component {
         currentTask.parent = newParent;
         this.setState(currentTask);
     }
+
+    removeWarning = () => {
+        const { warning } = this.state;
+
+        if (warning) {
+            this.setState({ warning: false });
+        }
+    }
+
+    closeCreateModel = () => {
+        const { toggleActive } = this.props;
+
+        toggleActive();
+        this.removeWarning();
+    }
     
     saveTask = () => {
-        const { currentTask, warning } = this.state;
+        const { currentTask } = this.state;
         const { tasks, toggleActive, refreshTasks } = this.props;
 
         // Check that text isn't empty
@@ -58,10 +73,7 @@ class createTask extends Component {
             return;
         }
         
-        // Remove warning
-        if (warning) {
-            this.setState({ warning: false });
-        }
+        this.removeWarning();
 
         // Random key
         currentTask.key = Math.floor(Math.random() * 100000);
@@ -94,7 +106,6 @@ class createTask extends Component {
 
         refreshTasks();
         toggleActive();
-        this.forceUpdate();
     }
 
     render() {
@@ -112,7 +123,7 @@ class createTask extends Component {
                     `}
                     onClick={isActive ? this.saveTask : toggleActive}
                 >
-                    +
+                    <span>+</span>
                 </button>
 
                 <div
@@ -135,7 +146,7 @@ class createTask extends Component {
                                 button
                                 button--close
                             "
-                            onClick={toggleActive}
+                            onClick={this.closeCreateModel}
                         >
                             Close
                         </button>
@@ -149,6 +160,7 @@ class createTask extends Component {
                                 ut-padding
                                 ${warning ? 'create__text--warning' : ''}
                             `}
+                            value={currentTask.text}
                             placeholder="What do you need to do?"
                             onChange={(e) => this.handleTextChange(e.target.value)}
                         />

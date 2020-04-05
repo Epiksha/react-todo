@@ -7,8 +7,7 @@
     transform: translate(-50%, -50%);
 
     box-sizing: border-box;
-    min-height: 35em;
-    max-height: 42em;
+    height: 75%;
     width: calc(100% - 45px);
     max-width: 600px;
     border-radius: 0.5rem;
@@ -24,5 +23,13 @@
     
     @media (min-width: $desktop) {
         width: 40%;
+    }
+
+    @media (min-height: 656px) {
+        height: 75%;
+    }
+
+    @media (min-height: 1000px) {
+        height: 60%;
     }
 }
