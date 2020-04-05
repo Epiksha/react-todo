@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ParentDropdown = ({ parents, currentParent, handleParentChange }) => (
+const ParentDropdown = ({ parents, current, handlePropertyChange }) => (
     <section className="ut-paddingVert">
         <div>
             <select
                 className="dropdown"
-                value={currentParent}
-                onChange={(e) => handleParentChange(e.target.value)}
+                value={current}
+                onChange={(e) => handlePropertyChange(e.target.value, 'parent')}
             >
                 <option
                     value="None"
@@ -32,8 +32,8 @@ const ParentDropdown = ({ parents, currentParent, handleParentChange }) => (
 
 ParentDropdown.propTypes = {
     parents: PropTypes.arrayOf(PropTypes.string).isRequired,
-    currentParent: PropTypes.string.isRequired,
-    handleParentChange: PropTypes.func.isRequired,
+    current: PropTypes.string.isRequired,
+    handlePropertyChange: PropTypes.func.isRequired,
 };
 
 export default ParentDropdown;

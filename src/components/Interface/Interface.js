@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Task from '../Task/Task';
-import CreateTask from '../CreateTask/CreateTask';
+import Creator from '../Creator/Creator';
 
 import { ReactComponent as Fingerprint } from '../../assets/images/fingerprint.svg';
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
@@ -61,7 +61,7 @@ class Interface extends Component {
                         ))}
                     </div>
 
-                    <CreateTask
+                    <Creator
                         tasks={tasks}
                         isActive={isCreateActive}
                         toggleActive={this.toggleCreateModal}

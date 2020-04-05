@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import PriorityHolder from '../PriorityHolder/PriorityHolder';
-import ParentHolder from '../ParentHolder/ParentHolder';
+import CreatorUI from '../CreatorUI/CreatorUI';
 
 class createTask extends Component {
     constructor(props) {
@@ -18,33 +17,15 @@ class createTask extends Component {
             warning: false,
         };
     }
-    
-    handleTextChange = (newText) => {
+
+    handlePropertyChange = (value, type = 'text') => {
         const { currentTask } = this.state;
 
-        currentTask.text = newText;
-        this.setState(currentTask);
-    }
-
-    handlePriorityChange = (newPriority) => {
-        const { currentTask } = this.state;
-        
-        if (newPriority === currentTask.priority) {
+        if ((type === 'priority' || type === 'parent') && value === currentTask[type]) {
             return;
         }
 
-        currentTask.priority = newPriority;
-        this.setState(currentTask);
-    }
-
-    handleParentChange = (newParent) => {
-        const { currentTask } = this.state;
-
-        if (newParent === currentTask.parent) {
-            return;
-        }
-
-        currentTask.parent = newParent;
+        currentTask[type] = value;
         this.setState(currentTask);
     }
 
@@ -162,7 +143,7 @@ class createTask extends Component {
                             `}
                             value={currentTask.text}
                             placeholder="What do you need to do?"
-                            onChange={(e) => this.handleTextChange(e.target.value)}
+                            onChange={(e) => this.handlePropertyChange(e.target.value)}
                         />
 
                         <div
@@ -176,17 +157,31 @@ class createTask extends Component {
                             </p>
                         </div>
 
-                        <PriorityHolder
+                        <CreatorUI
+                            current={currentTask.priority}
+                            type="priority"
+                            handlePropertyChange={this.handlePropertyChange}
                             tasks={tasks}
-                            handlePriorityChange={this.handlePriorityChange}
+                        />
+                        
+                        <CreatorUI
+                            current={currentTask.parent}
+                            type="parent"
+                            handlePropertyChange={this.handlePropertyChange}
+                            tasks={tasks}
+                        />
+
+                        {/* <PriorityHolder
+                            tasks={tasks}
+                            handlePropertyChange={this.handlePropertyChange}
                             currentPriority={currentTask.priority}
                         />
                         
                         <ParentHolder
                             parents={tasks.map((task) => task.text)}
-                            handleParentChange={this.handleParentChange}
+                            handlePropertyChange={this.handlePropertyChange}
                             currentParent={currentTask.parent}
-                        />
+                        /> */}
                     </div>
                 </div>
             </>
