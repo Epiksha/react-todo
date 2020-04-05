@@ -15,10 +15,10 @@ class Interface extends Component {
     }
 
     componentDidMount() {
-        const tasks = JSON.parse(localStorage.getItem('tasks'));
+        const storedTasks = JSON.parse(localStorage.getItem('tasks'));
         
-        if (tasks) {
-            this.setState(tasks);
+        if (storedTasks) {
+            this.setState({ tasks: storedTasks });
         }
     }
 

@@ -70,6 +70,7 @@ class createTask extends Component {
                 priority: 'Low',
                 parent: 'None',
                 isComplete: false,
+                key: Math.floor(Math.random() * 100000),
             },
         });
 
@@ -121,6 +122,17 @@ class createTask extends Component {
                             placeholder="What do you need to do?"
                             onChange={(e) => this.handleTextChange(e.target.value)}
                         />
+
+                        <div
+                            className={`
+                                create__warning
+                                ${warning ? 'active' : ''}
+                            `}
+                        >
+                            <p className="create__warning__text">
+                                Please add some text before saving.
+                            </p>
+                        </div>
 
                         <PriorityHolder
                             tasks={tasks}

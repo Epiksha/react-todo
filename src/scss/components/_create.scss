@@ -60,4 +60,39 @@
             font-weight: bold;
         }
     }
+
+    &__warning {
+        text-align: left;
+
+        position: relative;
+
+        overflow: hidden;
+        height: 1.5em;
+        max-height: 0;
+
+        transition: max-height 0.5s;
+
+        &.active {
+            max-height: 1.5em;
+        }
+
+        &__text {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            color: $color3;
+
+            font-weight: bold;
+
+            opacity: 0;
+            
+            transition: opacity 1s;
+
+            .create__warning.active & {
+                opacity: 1;
+            }
+        }
+    }
 }
