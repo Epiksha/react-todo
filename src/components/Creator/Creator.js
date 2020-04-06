@@ -104,9 +104,7 @@ class createTask extends Component {
                     `}
                     onClick={isActive ? this.saveTask : toggleActive}
                 >
-                    <span>
-                        <span>+</span>
-                    </span>
+                    <span>+</span>
                 </button>
 
                 <div

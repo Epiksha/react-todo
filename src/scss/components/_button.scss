@@ -17,16 +17,15 @@
         transform: translate(-50%, 50%);
         z-index: 1;
 
-        height: 5.5rem;
-        width: 5.5rem;
+        height: 55px;
+        width: 55px;
         border: solid 4px $color4;
         border-radius: 50%;
 
         background-color: $color2;
         color: $color0;
 
-        font-size: 3.8em;
-        line-height: 100%;
+        font-size: 38px;
 
         transition: background-color 0.5s, transform 0.5s;
 
@@ -38,30 +37,27 @@
             transform: translate(-50%, 50%) scale(1.1);
 
             & > span {
-                transform: translate(-50%, -50%) rotateZ(360deg);
+                transform: rotateZ(360deg);
             }
         }
 
         & > span {
-            display: block;
-            height: 100%;
-            
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotateZ(0);
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
 
+            position: relative;
+            top: -3px;
+            height: 55px;
+            transform: rotateZ(0);
+
+            height: 55px;
             margin: 0;
             padding: 0;
 
-            transition: transform 1s;
+            line-height: 55px;
 
-            & > span {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+            transition: transform 1s;
         }
     }
 
