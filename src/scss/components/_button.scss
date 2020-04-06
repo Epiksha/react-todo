@@ -48,14 +48,13 @@
 
             position: relative;
             top: -3px;
-            height: 55px;
             transform: rotateZ(0);
 
             height: 55px;
             margin: 0;
             padding: 0;
 
-            line-height: 55px;
+            line-height: normal;
 
             transition: transform 1s;
         }

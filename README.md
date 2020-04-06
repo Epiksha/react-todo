@@ -12,3 +12,5 @@ What one might notice is that destructuring is used everywhere it possibly can -
 The app is entirely integrated using the browser's local storage to handle data changes and is fully responsive.
 
 Feel free to create some tasks and experiment for yourself.
+
+Known Bug: Plus icon not vertically centered on windows.
