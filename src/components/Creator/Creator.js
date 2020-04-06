@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import CreatorUI from '../CreatorUI/CreatorUI';
 
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg';
+
 class createTask extends Component {
     constructor(props) {
         super(props);
@@ -104,7 +106,7 @@ class createTask extends Component {
                     `}
                     onClick={isActive ? this.saveTask : toggleActive}
                 >
-                    <span>+</span>
+                    <PlusIcon />
                 </button>
 
                 <div
