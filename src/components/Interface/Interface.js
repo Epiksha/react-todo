@@ -48,7 +48,7 @@ class Interface extends Component {
                 </button>
 
                 <main className="holder">
-                    <h1 className="ut-relative ut-marginVert-3 ut-z-1">Things To Do List</h1>
+                    <h1 className="ut-relative ut-marginVert-3 ut-z-3">Things To Do List</h1>
 
                     <div className="tasksContainer ut-paddingHorz-2 ut-paddingBottom-3 ut-borderBox">
                         {tasks.map((task) => (
