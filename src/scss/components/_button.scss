@@ -225,23 +225,4 @@
             }
         }
     }
-
-    &--fingerprint {
-        position: absolute;
-        top: $spacing * 1.5;
-        right: $spacing * 1.5;
-
-        width: 3.5rem;
-
-        transition: transform 0.5s;
-
-        &:hover {
-            transform: scale(1.25);
-        }
-
-        svg {
-            height: 100%;
-            width: 100%;
-        }
-    }
 }

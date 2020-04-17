@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import Task from '../Task/Task';
 import Creator from '../Creator/Creator';
 
-import { ReactComponent as Fingerprint } from '../../assets/images/fingerprint.svg';
-import { ReactComponent as Logo } from '../../assets/images/logo.svg';
-
 class Interface extends Component {
     constructor() {
         super();
@@ -40,13 +37,6 @@ class Interface extends Component {
 
         return (
             <>
-                <button
-                    type="button"
-                    className="button button--fingerprint"
-                >
-                    <Fingerprint />
-                </button>
-
                 <main className="holder">
                     <h1 className="ut-relative ut-marginVert-3 ut-z-3">Things To Do List</h1>
 
@@ -68,8 +58,6 @@ class Interface extends Component {
                         refreshTasks={this.refreshTasks}
                     />
                 </main>
-
-                <Logo className="logo" />
             </>
         );
     }
